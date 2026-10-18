@@ -10,6 +10,10 @@ on:
         required: false
         type: string
         default: '24.x'
+      install-flags:
+        required: false
+        type: string
+        default: ''
 
 jobs:
   build-and-test:
@@ -34,6 +38,11 @@ jobs:
           npm run test --if-present
 
       - name: Compile Application (Frontend / TypeScript)
+        if: ${{ inputs.project-type == 'nextjs' }}
+        env:
+          NEXT_PUBLIC_API: ${{ secrets.DEV_API }}
+          # Add any other build-time API base URL your getStaticProps needs:
+          # API: ${{ secrets.NEXT_PUBLIC_API }}
         run: npm run build --if-present
 
       # -------------------------------------------------------------
