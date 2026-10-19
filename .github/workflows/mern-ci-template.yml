@@ -10,6 +10,10 @@ on:
         required: false
         type: string
         default: '24.x'
+      cache:
+        required: false
+        type: string
+        default: 'npm'
       install-flags:
         required: false
         type: string
@@ -26,7 +30,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ inputs.node-version }}
-          cache: 'npm'
+          cache: ${{ inputs.cache }}
 
       - name: Clean Deterministic Install
         run: npm ci
