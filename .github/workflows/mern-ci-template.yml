@@ -79,12 +79,11 @@ jobs:
         with:
           name: nextjs-artifact
           path: |
-            .next/standalone/
-            .next/static/
+            .next/
             public/
-            .next/BUILD_ID
             ecosystem.config.js
             package.json
+          include-hidden-files: true
           retention-days: 3
 
       # -------------------------------------------------------------
