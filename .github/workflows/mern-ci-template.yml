@@ -78,6 +78,7 @@ jobs:
             .next/standalone/
             .next/static/
             public/
+            .next/BUILD_ID
             ecosystem.config.js
             package.json
           retention-days: 3
